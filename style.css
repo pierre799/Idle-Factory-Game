@@ -6,3 +6,12 @@ header{
 	background-color: black;
 	color: white;
 }
+
+.frame{
+	border: 1px black solid;
+	padding: 1em;
+}
+
+.expl{
+	color: grey;
+}
