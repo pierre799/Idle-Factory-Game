@@ -7,11 +7,11 @@ header{
 	color: white;
 }
 
-.frame{
+.laframe{
 	border: 1px black solid;
 	padding: 1em;
 }
 
-.expl{
+p.expl{
 	color: grey;
 }
