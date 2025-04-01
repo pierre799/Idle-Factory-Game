@@ -10,15 +10,29 @@
 
 <body>
     <header>
-        <h1>Le Challenge.</h1>
+        <h1>Le Défi</h1>
     </header>
 
     <main>
         <div class="contenu">
-            <p>Consigne.</p>
-            <div class="fenetreJeu">
+            <div class="infoJeu">
+                <p>Round 4/8</p>
+                <tr>
+                    <th><img href="ressources/images/looseIcon.png"></th>
+                    <th><img href="ressources/images/looseIcon.png"></th>
+                    <th>W</th>
+                    <th>W</th>
+                    <th>W</th>
+                    <th>W</th>
+                    <th>W</th>
+                </tr>
+            </div>
+            <p class="texteInstruction">instruction du mini-jeu</p>
+            <div class="fenetreJeu" id = "fenetreJeu" onmousemove="posCurseur(event)">
+                <img href="ressources/images/curseurCentre.png" class="curseurCentre" id="curseurCentre"></img>
             </div>
             <div class="barreCompteRebours">
+                <div class="barreContour" id="barreContour"></div>
                 <div class="barreRemplissage" id="barreRemplissage"></div>
                 <div class="barreContenu" id="barreContenu"></div>
             </div>
