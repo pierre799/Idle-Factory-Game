@@ -9,27 +9,29 @@
 </head>
 
 <body>
-    <header>
-        <h1>Le Défi</h1>
-    </header>
-
     <main>
         <div class="contenu">
             <div class="infoJeu">
-                <p>Round 4/8</p>
-                <tr>
-                    <th><img href="ressources/images/looseIcon.png"></th>
-                    <th><img href="ressources/images/looseIcon.png"></th>
-                    <th>W</th>
-                    <th>W</th>
-                    <th>W</th>
-                    <th>W</th>
-                    <th>W</th>
-                </tr>
+                <div class="statsJeu">
+                    <p>Round 4/8</p>
+                    <table class="tableauManches">
+                        <th><img class="iconeResultat" src="ressources/images/looseIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/winIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/winIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/winIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/NAIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/NAIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/NAIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/NAIcon.png"></th>
+                    </table>
+                </div>
+                <p class="texteInstruction">Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. </p>
             </div>
-            <p class="texteInstruction">instruction du mini-jeu</p>
-            <div class="fenetreJeu" id = "fenetreJeu" onmousemove="posCurseur(event)">
-                <img href="ressources/images/curseurCentre.png" class="curseurCentre" id="curseurCentre"></img>
+            <div class="fenetreJeu">
+                <div class="fenetreJeuContour"></div>
+                <div class="fenetreJeuMain" id = "fenetreJeuMain" onmousemove="posCurseur(event)">
+                    <img src="ressources/images/curseurCentre.png" class="curseurCentre" id="curseurCentre"></img>
+                </div>
             </div>
             <div class="barreCompteRebours">
                 <div class="barreContour" id="barreContour"></div>
