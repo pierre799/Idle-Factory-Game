@@ -4,7 +4,7 @@ const curseurCentre = document.getElementById("curseurCentre");
 const barreConbarreContourtenu = document.getElementById("barreContour");
 const fenetreJeuMain = document.getElementById("fenetreJeuMain")
 
-btnCommencer.addEventListener('click', () => compteRebours("3"));
+btnCommencer.addEventListener('click', () => compteRebours("7"));
 
 function compteRebours(secondes){
 	btnCommencer.disabled = true;

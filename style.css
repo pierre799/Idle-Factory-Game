@@ -5,9 +5,24 @@ body{
     	linear-gradient(#510399, rgb(12, 4, 83));
   }
 
+@font-face {
+    font-family: "Jersey";
+    src: url(ressources/polices/Jersey20-Regular.ttf) format("truetype");
+}
+
+p, a, button{
+	font-family: "Jersey";
+}
+
+p.texteRound{
+	font-size: 16pt;
+	font-weight: bold;
+}
+
 p.texteInstruction{
 	margin: 0;
 	width: 100%;
+	font-size: 13pt;
 }
 
 div.fenetreJeuMain{
@@ -21,7 +36,6 @@ div.fenetreJeuMain{
 div.infoJeu{
 	box-shadow: inset 0 0 0px 3px #00A0EA, inset 0 0 0px 4px #000000,  inset 0 0 6px 10px #ffaa2b;
 	border: 1px solid black;
-	border-radius: 12px;
 	background-color: #FFE62B;
 	width: 560px;
 	height: 100px;
@@ -37,7 +51,6 @@ div.fenetreJeu{
 	height: 100%;
 	box-shadow: inset 0 0 0px 3px #FFE62B, inset 0 0 0px 4px #000000,  inset 0 0 4px 4px #000000;
 	border: 1px solid black;
-	border-radius: 12px;
 	width: 600px;
 	height: 600px;
 }
@@ -73,12 +86,10 @@ div.barreContenu{
 	background-color: rgb(60, 55, 50);
 	border: 1px solid black;
 	transition: background-color 1s linear;
-	border-radius: 25px;
 	border: 1px solid black;
 }
 
 div.barreContour{
-	border-radius: 25px;
 	position: absolute;
 	border: 1px solid black;
 	width: 100%;
@@ -86,11 +97,9 @@ div.barreContour{
 	height: 1.5em;
 	z-index: 3;
 	box-shadow: inset 0 0 0px 3px #FFE62B, inset 0 0 0px 4px #000000,  inset 0 0 4px 4px #000000;
-	transition: box-shadow 1s linear;
 }
 
 div.barreRemplissage{
-	border-radius: 25px;
 	position: absolute;
 	top: 0;
 	height: 1.5em;
