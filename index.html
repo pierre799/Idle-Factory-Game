@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Challenge</title>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <main>
         <div class="contenu">
+
+            <!--FRAME 1 : INFO JEU-->
+
             <div class="infoJeu">
                 <div class="statsJeu">
-                    <p class="texteRound">Round 3/5</p>
-                    <table class="tableauManches">
-                        <th><img class="iconeResultat" src="ressources/images/icones/looseIcon.png"></th>
-                        <th><img class="iconeResultat" src="ressources/images/icones/winIcon.png"></th>
-                        <th><img class="iconeResultat" src="ressources/images/icones/winIcon.png"></th>
+                    <p class="texteRound" id="texteRound">En 5 round</p>
+                    <table id="tableauResultats">
+                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
+                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
                         <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
                         <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
                     </table>
                 </div>
-                <p class="texteInstruction">Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. Instruction du mini-jeu. </p>
+                <p class="texteInstruction">ici s'affiche les instructions du mini-jeu en cours. <span><img src="ressources/images/icones/winIcon.png" width="16" style="vertical-align: text-top; pointer-events: none;"></span></p>
             </div>
+
+            <!--FRAME 2 : FENETRE JEU-->
+
             <div class="fenetreJeu">
-                <div class="fenetreJeuContour"></div>
-                <div class="fenetreJeuMain" id = "fenetreJeuMain" onmousemove="posCurseur(event)">
+                <div class="fenetreJeuMain" id = "fenetreJeuMain" onmousemove="posCurseur(event)" onclick="interactionCurseur(event)">
                     <img src="ressources/images/minijeux/curseurCentre.png" class="curseurCentre" id="curseurCentre"></img>
                 </div>
             </div>
+
+            <!--FRAME 3 : BARRE COMPTE A REBOURS-->
+
             <div class="barreCompteRebours">
                 <div class="barreContour" id="barreContour"></div>
                 <div class="barreRemplissage" id="barreRemplissage"></div>
                 <div class="barreContenu" id="barreContenu"></div>
             </div>
-            <button id="btnCommencer">Bouton magique</button>
         </div>
     </main>
 
     <script src="js/app.js"></script>
-    
 </body>
+
 </html>
