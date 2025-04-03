@@ -1,53 +1,41 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <main>
-        <div class="contenu">
+        <div class="content">
 
-            <!--FRAME 1 : INFO JEU-->
+            <!-- FRAME 1: GAME INFO -->
 
-            <div class="infoJeu">
-                <div class="statsJeu">
-                    <span><img src="ressources/images/icones/coinIcon.png" class="iconePiece"></span><p class="texteMonnaie" id="texteMonnaie">0</p>
-                    <!--
-                    <table id="tableauResultats">
-                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
-                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
-                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
-                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
-                        <th><img class="iconeResultat" src="ressources/images/icones/NAIcon.png"></th>
-                    </table>
-                    -->
-                </div>
-                <p class="texteInstruction">ici s'affiche les instructions du mini-jeu en cours. <span><img src="ressources/images/icones/winIcon.png" style="vertical-align: text-top; pointer-events: none; height:2.5vh;width:2.5vh;"></span></p>
+            <div class="gameInfo">
+                <span><img src="assets/icons/coin-icon.png" class="coinIcon"></span>
+                <p class="balanceText" id="balanceText">0</p>
             </div>
 
-            <!--FRAME 2 : FENETRE JEU-->
+            <!-- FRAME 2: GAME WINDOW -->
 
-            <div class="fenetreJeu">
-                <div class="fenetreJeuMain" id = "fenetreJeuMain" onmousemove="posCurseur(event)" onclick="interactionCurseur(event)">
-                    <img src="ressources/images/minijeux/curseurCentre.png" class="curseurCentre" id="curseurCentre"></img>
+            <div class="gameWindow">
+                <div class="gameWindowMain" id="gameWindowMain" onclick="cursorInteraction(event)">
                 </div>
             </div>
 
-            <!--FRAME 3 : BARRE COMPTE A REBOURS-->
+            <!-- FRAME 3: PROGRESS BAR -->
 
-            <div class="barreCompteRebours">
-                <div class="barreContour" id="barreContour"></div>
-                <div class="barreRemplissage" id="barreRemplissage"></div>
-                <div class="barreContenu" id="barreContenu"></div>
+            <div class="progressBar">
+                <div class="barOutline" id="barOutline"></div>
+                <div class="barFill" id="barFill"></div>
+                <div class="barContent" id="barContent"></div>
             </div>
         </div>
     </main>
 
-    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
