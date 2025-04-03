@@ -37,10 +37,10 @@ div.infoJeu {
     width: 30vw;
     height: 12vh;
     margin-bottom: 2vh;
-    padding-top: 0.75em;
-    padding-right: 1.5em;
-    padding-bottom: 0.75em;
-    padding-left: 1.5em;
+    padding-top: 0.75vh;
+    padding-right: 1.5vh;
+    padding-bottom: 0.75vh;
+    padding-left: 1.5vh;
     background-color: #FFE62B;
     border: 1px solid black;
 }
@@ -62,20 +62,20 @@ div.statsJeu > p {
 }
 
 p.texteRound {
-    font-size: 16pt;
+    font-size: 2.5vh;
     font-weight: bold;
 }
 
 .iconeResultat {
     pointer-events: none;
     user-select: none;
-    height: 20pt;
+    height: 2.5vh;
 }
 
 p.texteInstruction {
     width: 100%;
     margin: 0;
-    font-size: 13pt;
+    font-size: 2.5vh;
 }
 
 /*--------------------------*/

@@ -2,20 +2,16 @@ const barreRemplissage = document.getElementById("barreRemplissage");
 const curseurCentre = document.getElementById("curseurCentre");
 const barreConbarreContourtenu = document.getElementById("barreContour");
 const fenetreJeuMain = document.getElementById("fenetreJeuMain");
-const texteRound = document.getElementById("texteRound");
+const texteMonnaie = document.getElementById("texteMonnaie");
 const tableauResultats = document.getElementById("tableauResultats");
 
 var enJeu = false;
 var resultats = ["NAIcon.png","looseIcon.png","winIcon.png"];
-var round = 0;
-
-//const firstTh = tableauResultats.getElementsByTagName("th")[round];
-//const img = firstTh.querySelector("img");
-//img.src = "ressources/images/icones/winIcon.png";
+var monnaie = 0;
 
 function compteRebours(secondes){
 	enJeu = true;
-    texteRound.textContent = `Round ${round+1}/5`;
+    texteMonnaie.textContent = `${monnaie+1}`;
     let tempsRestant = secondes;
     
     let intervalle = setInterval(() => {
@@ -32,24 +28,22 @@ function compteRebours(secondes){
 			barreRemplissage.style.width = "100%";
 
             
-            round ++;
+            monnaie ++;
 			enJeu = false;
         }
     }, 1000);
 }
 
 function posCurseur(event) {
-    let rect = fenetreJeuMain.getBoundingClientRect(); // Get container position
-    let x = event.clientX - rect.left; // Get x relative to the container
-    let y = event.clientY - rect.top;  // Get y relative to the container
-
+    let rect = fenetreJeuMain.getBoundingClientRect();
+    let x = event.clientX - rect.left;
+    let y = event.clientY - rect.top;
     curseurCentre.style.left = `${x - curseurCentre.offsetWidth / 2}px`;
     curseurCentre.style.top = `${y - curseurCentre.offsetHeight / 2}px`;
 }
 
 function interactionCurseur(event){
-    //verifier les etats pour savoir si en jeu ou non, si pas en jeu, on en lance un
     if (enJeu == false){
-        compteRebours("10");
+        compteRebours("5");
     }
 }
