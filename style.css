@@ -42,7 +42,7 @@ div.infoJeu {
     padding-bottom: 0.75vh;
     padding-left: 1.5vh;
     background-color: #FFE62B;
-    border: 1px solid black;
+    border: 0.3vh solid black;
 }
 
 th, tr, table, .statsJeu{
@@ -52,13 +52,23 @@ th, tr, table, .statsJeu{
 
 div.statsJeu {
     display: inline-flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
 div.statsJeu > p {
     margin: 0;
+}
+
+img.iconePiece{
+    vertical-align: text-top;
+    pointer-events: none;
+    height:2.5vh;
+    width:2.5vh;
+}
+
+p.texteMonnaie{
+    font-size: 2.5vh;
 }
 
 p.texteRound {
@@ -86,7 +96,7 @@ div.fenetreJeu {
     width: 30vw;
     margin-bottom: 2vh;
     background-color: rgb(65, 60, 56);
-    border: 1px solid black;
+    border: 0.3vh solid black;
 }
 
 div.fenetreJeuMain {
@@ -111,7 +121,7 @@ div.barreCompteRebours {
     position: relative;
     width: 30vw;
     height: 3vh;
-    border: 1px black solid;
+    border: 0.3vh solid black;
 }
 
 div.barreContour {
@@ -121,7 +131,6 @@ div.barreContour {
     top: 0;
     width: 30vw;
     height: 3vh;
-    border: 1px solid black;
 }
 
 div.barreRemplissage {
@@ -132,12 +141,10 @@ div.barreRemplissage {
     height: 100%;
     transition: width 1s cubic-bezier(0.3, 0, 0.6, 1);
     background: repeating-linear-gradient(45deg,#24CEFB,#24CEFB 2.5vh,#00A0EA 2.5vh,#00A0EA 5vh);
-    border: 1px solid black;
 }
 
 div.barreContenu {
     width: 100%;
     height: 100%;
     background-color: rgb(65, 60, 56);
-    border: 1px solid black;
 }
