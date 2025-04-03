@@ -8,32 +8,24 @@
 </head>
 
 <body>
-    <main>
-        <div class="content">
-
-            <!-- FRAME 1: GAME INFO -->
-
-            <div class="gameInfo">
-                <span><img src="assets/icons/coin-icon.png" class="coinIcon"></span>
-                <p class="balanceText" id="balanceText">0</p>
-            </div>
-
-            <!-- FRAME 2: GAME WINDOW -->
-
-            <div class="gameWindow">
-                <div class="gameWindowMain" id="gameWindowMain" onclick="cursorInteraction(event)">
-                </div>
-            </div>
-
-            <!-- FRAME 3: PROGRESS BAR -->
-
+    <div class="container">
+        <div class="left">
             <div class="progressBar">
-                <div class="barOutline" id="barOutline"></div>
-                <div class="barFill" id="barFill"></div>
-                <div class="barContent" id="barContent"></div>
+                <div class="progressBarOutline" id="progressBarOutline"></div>
+                <div class="progressBarFill" id="progressBarFill"></div>
+                <div class="progressBarBackground"></div>
+            </div>
+            <div class="gameArea" id="gameArea" onclick="frameClicked(event)"></div>
+        </div>
+        <div class="right">
+            <div class="playerStats">
+                <p id="balanceText">0</p><img src="assets/icons/bill-icon.png" class="billIcon">
+            </div>
+            <div class="sidePanel">
+                <p class="sidePanelText">Cliquer à droite incrémente votre argent de 1 billet.</p>
             </div>
         </div>
-    </main>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
