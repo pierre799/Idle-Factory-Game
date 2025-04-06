@@ -1,3 +1,5 @@
+/*suppr, voir si pointer-events: none et user-select: none sur les div sup fonctionnent sur les divs inf*/
+
 * {
     margin: 0;
     padding: 0;
@@ -33,18 +35,29 @@ body, html {
 .progressBar {
     height: 4.5vh;
     width: 100%;
-    border: 0.3vh solid black;
     position: relative;
 }
 
 .progressBarOutline {
     box-shadow: inset 0 0 0 0.5vh #FFE62B, inset 0 0 0 0.65vh #000000, inset 0 0 0.5vh 0.65vh #000000;
+    border: 0.3vh solid black;
     z-index: 3;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+@keyframes barBlinkingAnimation {
+    0% {
+        box-shadow: inset 0 0 0 0.5vh #ffffff, inset 0 0 0 0.65vh #a5ffac, inset 0 0 0.5vh 0.65vh #ffffff;
+        border: 0.3vh solid rgb(174, 255, 158);
+    }
+    100% {
+        box-shadow: inset 0 0 0 0.5vh #FFE62B, inset 0 0 0 0.65vh #000000, inset 0 0 0.5vh 0.65vh #000000;
+        border: 0.3vh solid black;
+    }
 }
 
 .progressBarFill {
@@ -54,8 +67,22 @@ body, html {
     left: 0;
     z-index: 2;
     position: absolute;
-    transition: width 1s cubic-bezier(0.3, 0, 0.6, 1);
     background: repeating-linear-gradient(45deg,#24CEFB,#24CEFB 2.5vh,#00A0EA 2.5vh,#00A0EA 5vh);
+}
+
+@keyframes fillingAnimation {
+    0% {
+        width: 0%;
+    }
+
+    99%{
+        background: repeating-linear-gradient(45deg,#24CEFB,#24CEFB 2.5vh,#00A0EA 2.5vh,#00A0EA 5vh);
+    }
+
+    100% {
+        width: 100%;
+        background: repeating-linear-gradient(45deg,rgb(86, 251, 36), rgb(86, 251, 36) 2.5vh,rgb(24, 163, 54) 2.5vh, rgb(24, 163, 54) 5vh);
+    }
 }
 
 .progressBarBackground {
@@ -75,6 +102,51 @@ body, html {
     height: 75.5vh;
     margin-top: 3.5vh;
     width: 100%;
+    position: relative;
+}
+
+.unit{
+    height: 6.5%;
+    width: auto;
+    position: absolute;
+}
+
+@keyframes unitAnimation {
+    0% {
+        left: 0;
+        top: 15.5%;
+    }
+    20% {
+        left: 93%;
+        top: 15.5%;
+        transform: translateX(-100%);
+    }
+    40% {
+        left: 93%;
+        top: 54.5%;
+        transform: translate(-100%, -50%);
+    }
+    60% {
+        left: 7%;
+        top: 54.5%;
+        transform: translateY(-50%);
+    }
+    80% {
+        left: 7%;
+        top: 93.5%;
+        transform: translateY(-100%);
+    }
+    100% {
+        left: 100%;
+        top: 93.5%;
+        transform: translate(-100%, -100%);
+    }
+}
+
+
+.layoutSuppr{
+    width: 100%;
+    height: 100%;
 }
 
 .right {
@@ -93,6 +165,19 @@ body, html {
     
     height: 15vh;
     width: 100%;
+    pointer-events: none;
+    user-select: none;
+}
+
+@keyframes gainBlinkingAnimation {
+    0% {
+        box-shadow: inset 0 0 0 0.5vh #ffffff, inset 0 0 0 0.65vh #000000, inset 0 0 0.5vh 1.25vh #ffffff;
+        border: 0.3vh solid #fff4a3;
+    }
+    100% {
+        box-shadow: inset 0 0 0 0.5vh #FFE62B, inset 0 0 0 0.65vh #000000, inset 0 0 0.5vh 1.25vh #ffaa2b;
+        border: 0.3vh solid black;
+    }
 }
 
 .billIcon {
@@ -112,10 +197,55 @@ body, html {
     height: 65vh;
     margin-top: 3.5vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.sidePanelText { /*suppr, appliquer sur tout textes?*/
+.upgradeBox{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    flex: 1;
+    margin: 0.5vh 0;
+}
+
+.locked{
+    box-shadow: inset 0 0 1.25vh 1.25vh #4f4f50;
+    background-color: #6E6E78;
+    border: 0.3vh solid black;
+}
+
+.unlocked{
+    box-shadow: inset 0 0 1.25vh 1.25vh #983be4;
+    background-color: #7715c7;
+    border: 0.3vh solid black;
+}
+
+.unlocked:hover{
+    background-color: #983be4;
+    border: 0.3vh solid #c187f1;
+}
+
+.upgradeBox > p {
     color: white;
     font-size: 2.5vh;
+    pointer-events: none;
+    user-select: none;
 }
 
+.upgradeBox > span {
+    background-color: #078F40;
+    border: 0.3vh solid #0b3d20;
+    margin-top: 1vh;
+    border-radius: 1vh;
+    padding: 0.25vh;
+    display: flex; 
+    align-items: center;
+    color: #0b3d20;
+    font-size: 2.5vh;
+    pointer-events: none;
+    user-select: none;
+}

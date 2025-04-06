@@ -15,14 +15,39 @@
                 <div class="progressBarFill" id="progressBarFill"></div>
                 <div class="progressBarBackground"></div>
             </div>
-            <div class="gameArea" id="gameArea" onclick="frameClicked(event)"></div>
+            <div class="gameArea" id="gameArea" onclick="frameClicked(event)">
+                <img src="assets/images/layout.png" class="layoutSuppr" draggable="false">
+            </div>
         </div>
         <div class="right">
-            <div class="playerStats">
+            <div class="playerStats" id="playerStats">
                 <p id="balanceText">0</p><img src="assets/icons/bill-icon.png" class="billIcon">
             </div>
             <div class="sidePanel">
-                <p class="sidePanelText">Cliquer à droite incrémente votre argent de 1 billet.</p>
+                <div class="upgradeBox locked" id="upgrade1Box">
+                    <p>Faster cooldown</p>
+                    <span>
+                        <p id="priceUpgrade1Text"></p><img src="assets/icons/bill-icon.png" class="billIcon">
+                    </span>
+                </div>
+                <div class="upgradeBox locked" id="upgrade2Box">
+                    <p>Faster conveyor belts</p>
+                    <span>
+                        <p id="priceUpgrade2Text"></p><img src="assets/icons/bill-icon.png" class="billIcon">
+                    </span>
+                </div>
+                <div class="upgradeBox locked" id="upgrade3Box">
+                    <p>Der Former</p>
+                    <span>
+                        <p id="priceUpgrade3Text"></p><img src="assets/icons/bill-icon.png" class="billIcon">
+                    </span>
+                </div>
+                <div class="upgradeBox locked" id="upgrade4Box">
+                    <p>Der Kolorierer</p>
+                    <span>
+                        <p id="priceUpgrade4Text"></p><img src="assets/icons/bill-icon.png" class="billIcon">
+                    </span>
+                </div>
             </div>
         </div>
     </div>
