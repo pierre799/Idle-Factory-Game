@@ -1,12 +1,9 @@
-//suppr, faire un dictionnaire qui régie toutes les variables liées aux upgrade
-//suppr, renommer certaines variables
-
 //-------------------------------------------------------------
 //                      GAME VARIABLES
 //-------------------------------------------------------------
 
 var isCooledDown = false;
-var balance = 10000000;
+var balance = 0;
 var cooldownDuration = 10;
 var unitFabricationDuration = 18;
 var shape = 1;
@@ -55,7 +52,6 @@ priceUpgrade1Text.textContent = `${priceUpgrade1}`; //suppr?
 priceUpgrade2Text.textContent = `${priceUpgrade2}`;
 priceUpgrade3Text.textContent = `${priceUpgrade3}`;
 priceUpgrade4Text.textContent = `${priceUpgrade4}`;
-checkForAvailableUpgrade(balance)
 
 //-------------------------------------------------------------
 //                         FUNCTIONS
@@ -149,12 +145,12 @@ function frameClicked(event) {
 
 function fasterCooldownUpgrade(){
     cooldownDuration = (2/3)*cooldownDuration+(1/3);
-    updateUpgradePrice("u1", 4); //suppr, changer et suprimer log
+    updateUpgradePrice("u1", 5); //suppr, changer et suprimer log
 }
 
 function fasterUnitFabricationUpgrade(){
     unitFabricationDuration = (8/13)*unitFabricationDuration+(20/13);
-    updateUpgradePrice("u2", 240); //suppr, changer et suprimer log
+    updateUpgradePrice("u2", 3); //suppr, changer et suprimer log
 }
 
 function unitReshaperUpgrade(){
