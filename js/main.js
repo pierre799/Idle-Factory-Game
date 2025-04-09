@@ -6,9 +6,9 @@
 //-------------------------------------------------------------
 
 var isCooledDown = false;
-var balance = 0;
-var cooldownDuration = 3;
-var unitFabricationDuration = 3;
+var balance = 10000000;
+var cooldownDuration = 10;
+var unitFabricationDuration = 18;
 var shape = 1;
 
 //-------------------------------------------------------------
@@ -30,10 +30,10 @@ const upgrade2Box = document.getElementById("upgrade2Box");
 const upgrade3Box = document.getElementById("upgrade3Box");
 const upgrade4Box = document.getElementById("upgrade4Box");
 
-var priceUpgrade1 = 1;
-var priceUpgrade2 = 1;
-var priceUpgrade3 = 1;
-var priceUpgrade4 = 1;
+var priceUpgrade1 = 100;
+var priceUpgrade2 = 80;
+var priceUpgrade3 = 10000;
+var priceUpgrade4 = 100000;
 
 var priceUpgrade1Text = document.getElementById("priceUpgrade1Text");
 var priceUpgrade2Text = document.getElementById("priceUpgrade2Text");
@@ -55,6 +55,7 @@ priceUpgrade1Text.textContent = `${priceUpgrade1}`; //suppr?
 priceUpgrade2Text.textContent = `${priceUpgrade2}`;
 priceUpgrade3Text.textContent = `${priceUpgrade3}`;
 priceUpgrade4Text.textContent = `${priceUpgrade4}`;
+checkForAvailableUpgrade(balance)
 
 //-------------------------------------------------------------
 //                         FUNCTIONS
@@ -105,7 +106,7 @@ function unitFabrication(seconds){
     gameArea.appendChild(unit);
 
     unit.addEventListener('animationend', function() {
-        balance++;
+        balance = balance + shape;
         balanceText.textContent = `${balance}`;
         checkForAvailableUpgrade(balance)
         unit.remove()
@@ -147,18 +148,17 @@ function frameClicked(event) {
 //-------------------------------------------------------------
 
 function fasterCooldownUpgrade(){
-    cooldownDuration --;
-    updateUpgradePrice("u1", 3);
+    cooldownDuration = (2/3)*cooldownDuration+(1/3);
+    updateUpgradePrice("u1", 4); //suppr, changer et suprimer log
 }
 
 function fasterUnitFabricationUpgrade(){
-    unitFabricationDuration /= 2;
-    updateUpgradePrice("u2", 4);
+    unitFabricationDuration = (8/13)*unitFabricationDuration+(20/13);
+    updateUpgradePrice("u2", 240); //suppr, changer et suprimer log
 }
 
 function unitReshaperUpgrade(){
     shape += 1;
-    
     updateUpgradePrice("u3", 2);
 }
 
@@ -168,6 +168,9 @@ function shapeAttribution() {
     } 
     if (shape === 2){
         return '../assets/images/units/shape-2.png'
+    }
+    if (shape > 2){
+        return '../assets/images/units/shape-3.png'
     }
 }
 
