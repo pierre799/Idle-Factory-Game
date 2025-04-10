@@ -6,7 +6,7 @@ var isCooledDown = false;
 var balance = 0;
 var cooldownDuration = 10;
 var unitFabricationDuration = 18;
-var shape = 1;
+var valueMultiplication = 1;
 
 //-------------------------------------------------------------
 //                      ELEMENT SELECTION
@@ -22,36 +22,26 @@ const playerStats = document.getElementById("playerStats");
 //                      UPGRADE VARIABLES
 //-------------------------------------------------------------
 
-const upgrade1Box = document.getElementById("upgrade1Box");
-const upgrade2Box = document.getElementById("upgrade2Box");
-const upgrade3Box = document.getElementById("upgrade3Box");
-const upgrade4Box = document.getElementById("upgrade4Box");
-
-var priceUpgrade1 = 100;
-var priceUpgrade2 = 80;
-var priceUpgrade3 = 10000;
-var priceUpgrade4 = 100000;
-
-var priceUpgrade1Text = document.getElementById("priceUpgrade1Text");
-var priceUpgrade2Text = document.getElementById("priceUpgrade2Text");
-var priceUpgrade3Text = document.getElementById("priceUpgrade3Text");
-var priceUpgrade4Text = document.getElementById("priceUpgrade4Text");
-
 var upgradeElements = {
-    u1 : [upgrade1Box, priceUpgrade1, priceUpgrade1Text],
-    u2 : [upgrade2Box, priceUpgrade2, priceUpgrade2Text],
-    u3 : [upgrade3Box, priceUpgrade3, priceUpgrade3Text],
-    u4 : [upgrade4Box, priceUpgrade4, priceUpgrade4Text]
-}
+    u1: {
+        box: document.getElementById("upgrade1Box"),
+        price: 40,
+        priceText: document.getElementById("priceUpgrade1Text")
+    },
+    u2: {
+        box: document.getElementById("upgrade2Box"),
+        price: 100,
+        priceText: document.getElementById("priceUpgrade2Text")
+    }
+};
 
 //-------------------------------------------------------------
 //                      INITIALISATION
 //-------------------------------------------------------------
 
-priceUpgrade1Text.textContent = `${priceUpgrade1}`; //suppr?
-priceUpgrade2Text.textContent = `${priceUpgrade2}`;
-priceUpgrade3Text.textContent = `${priceUpgrade3}`;
-priceUpgrade4Text.textContent = `${priceUpgrade4}`;
+for (let key in upgradeElements) {
+    upgradeElements[key].priceText.textContent = `${upgradeElements[key].price}`;
+}
 
 //-------------------------------------------------------------
 //                         FUNCTIONS
@@ -59,50 +49,51 @@ priceUpgrade4Text.textContent = `${priceUpgrade4}`;
 
 function checkForAvailableUpgrade(amount) {
     for (let key in upgradeElements) {
-        let [upgradeBox, priceUpgrade, priceUpgradeText] = upgradeElements[key];
+        let { box, price } = upgradeElements[key];
 
-        if (amount >= priceUpgrade) {
-            if (upgradeBox.classList.contains("locked")) {
-                upgradeBox.classList.remove('locked');
-                upgradeBox.classList.add('unlocked');
-                upgradeBox.addEventListener("click", buyUpgrade);
+        if (amount >= price) {
+            if (box.classList.contains("locked")) {
+                box.classList.remove('locked');
+                box.classList.add('unlocked');
+                box.addEventListener("click", buyUpgrade);
             }
         } else {
-            if (upgradeBox.classList.contains("unlocked")) {
-                upgradeBox.classList.remove('unlocked');
-                upgradeBox.classList.add('locked');
-                upgradeBox.removeEventListener("click", buyUpgrade);
+            if (box.classList.contains("unlocked")) {
+                box.classList.remove('unlocked');
+                box.classList.add('locked');
+                box.removeEventListener("click", buyUpgrade);
             }
         }
     }
 }
 
 function buyUpgrade(event) {
-    key = Object.keys(upgradeElements).find(k => upgradeElements[k].includes(event.target));
-    balance -= upgradeElements[key][1];
+    let clickedBox = event.currentTarget;
+    let key = Object.keys(upgradeElements).find(k => upgradeElements[k].box === clickedBox);
+    
+    if (!key) return;
+    if (balance < upgradeElements[key].price) return;
+
+    balance -= upgradeElements[key].price;
     balanceText.textContent = `${balance}`;
-    checkForAvailableUpgrade(balance)
+    checkForAvailableUpgrade(balance);
     if (key === "u1") {
-        fasterCooldownUpgrade()
+        fasterCooldownUpgrade();
     }
     if (key === "u2") {
-        fasterUnitFabricationUpgrade()
+        valueMultiplicationUpgrade();
     }
-    if (key === "u3") {
-        unitReshaperUpgrade()
-    }
-    //suppr, ajouter la derniere upgrade
 }
 
-function unitFabrication(seconds){
+function unitFabrication(){
     var unit = document.createElement('img');
-    unit.src = shapeAttribution();
+    unit.src = "../assets/images/units/shape.png";
     unit.className = "unit";
-    unit.style.animation = `unitAnimation ${seconds}s linear`
+    unit.style.animation = `unitAnimation ${unitFabricationDuration}s linear`
     gameArea.appendChild(unit);
 
     unit.addEventListener('animationend', function() {
-        balance = balance + shape;
+        balance += valueMultiplication;
         balanceText.textContent = `${balance}`;
         checkForAvailableUpgrade(balance)
         unit.remove()
@@ -116,7 +107,7 @@ function unitFabrication(seconds){
 
 function activateCooldown(seconds) {
     isCooledDown = true;
-    unitFabrication(unitFabricationDuration);
+    unitFabrication();
     progressBarFill.style.width = '0%';
     progressBarFill.style.background = "repeating-linear-gradient(45deg, #24CEFB, #24CEFB 2.5vh, #00A0EA 2.5vh, #00A0EA 5vh)";
     progressBarFill.style.animation = `fillingAnimation ${cooldownDuration}s linear 1 forwards`;
@@ -139,38 +130,17 @@ function frameClicked(event) {
     }
 }
 
-//-------------------------------------------------------------
-//                      UPGRADE FUNCTIONS
-//-------------------------------------------------------------
-
 function fasterCooldownUpgrade(){
     cooldownDuration = (2/3)*cooldownDuration+(1/3);
-    updateUpgradePrice("u1", 5); //suppr, changer et suprimer log
+    updateUpgradePrice("u1", 5);
 }
 
-function fasterUnitFabricationUpgrade(){
-    unitFabricationDuration = (8/13)*unitFabricationDuration+(20/13);
-    updateUpgradePrice("u2", 3); //suppr, changer et suprimer log
-}
-
-function unitReshaperUpgrade(){
-    shape += 1;
-    updateUpgradePrice("u3", 2);
-}
-
-function shapeAttribution() {
-    if (shape === 1){
-        return '../assets/images/units/shape-1.png'
-    } 
-    if (shape === 2){
-        return '../assets/images/units/shape-2.png'
-    }
-    if (shape > 2){
-        return '../assets/images/units/shape-3.png'
-    }
+function valueMultiplicationUpgrade(){
+    valueMultiplication *= 2;
+    updateUpgradePrice("u2", 3);
 }
 
 function updateUpgradePrice(upgrade, factor){
-    upgradeElements[upgrade][1] *= factor;
-    upgradeElements[upgrade][2].textContent = `${upgradeElements[upgrade][1]}`;
+    upgradeElements[upgrade].price *= factor;
+    upgradeElements[upgrade].priceText.textContent = `${upgradeElements[upgrade].price}`;
 }
