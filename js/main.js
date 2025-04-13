@@ -25,12 +25,12 @@ const playerStats = document.getElementById("playerStats");
 var upgradeElements = {
     u1: {
         box: document.getElementById("upgrade1Box"),
-        price: 40,
+        price: 20,
         priceText: document.getElementById("priceUpgrade1Text")
     },
     u2: {
         box: document.getElementById("upgrade2Box"),
-        price: 100,
+        price: 50,
         priceText: document.getElementById("priceUpgrade2Text")
     }
 };
@@ -131,16 +131,22 @@ function frameClicked(event) {
 }
 
 function fasterCooldownUpgrade(){
-    cooldownDuration = (2/3)*cooldownDuration+(1/3);
-    updateUpgradePrice("u1", 5);
+    cooldownDuration = (cooldownDuration/2);
+    updateUpgradePrice("u1", 10, "add");
 }
 
 function valueMultiplicationUpgrade(){
     valueMultiplication *= 2;
-    updateUpgradePrice("u2", 3);
+    updateUpgradePrice("u2", 30, "add");
 }
 
-function updateUpgradePrice(upgrade, factor){
-    upgradeElements[upgrade].price *= factor;
+function updateUpgradePrice(upgrade, value, operation){
+    if (operation === "add") {
+        upgradeElements[upgrade].price += value;
+    }
+    else if (operation === "mul") {
+        upgradeElements[upgrade].price *= value;
+    }
+
     upgradeElements[upgrade].priceText.textContent = `${upgradeElements[upgrade].price}`;
 }
